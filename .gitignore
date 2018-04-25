@@ -1,0 +1,10 @@
+/target/
+/.settings/
+/.classpath
+/.project
+/.idea
+
+*.iws
+.idea_modules/
+.idea/replstate.xml
+.idea/httpRequests
