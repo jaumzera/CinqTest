@@ -2,6 +2,8 @@
 Here you will find a scaffold of a project that aims to expose a REST service to list cities.
 You need to upgrade the project to the newest versions and implement this service using any necessary means.
 
+> Ok. Upgraded to Spring Boot latest (2.0.1.RELEASE)
+
 - Java (preferably Java 8 and Functional programming as much as possible)
 - RESTFull service
 - Data manipulation layer
@@ -12,17 +14,29 @@ You need to upgrade the project to the newest versions and implement this servic
 The actual implementation uses H2 in memory as the database. You will find also the scripts 
 for MySQL. The scripts insert a few entries in each table.
 
+> I kept using H2 for this test.
+
 # Proposed exercise
 The candidate must:
 - Create Entity classes for the tables, including relationships
-- Create the Data manipulation layer. Feel free to use structure or framework you like (JPA, JDBC, Spring Data, etc).
+   > Ok. I created entity classes under br.com.cinq.spring.data.sample.entity packages, as it was suggested by test files.
+
+- Create the data manipulation layer. Feel free to use structure or framework you like (JPA, JDBC, Spring Data, etc).
+   > Ok. I used JPA through Spring Data.
+
 - Create a GET REST service to retrieve the list of cities in the database, and return them as a JSON object.
+   > Ok. I created the get resource with Jersey framework.
+
 - The service may receive the query param "country" as a String, to restrict the search. The parameter may be part of the Country name
    http://server:port/rest/cities[?country=name]
+   > Ok. Resource created. As the bullet ponint mentioned "restrict search" and the brackets suggest that parameters were optional, when you request without `?country` it will retrieve all cities.
 
 - Create an operation to load data into the database (Here you're free to be creative. You can load data from a simple CSV, a spreadsheet, a rest service, etc...)
+   > Ok. I created a POST resource to create new cities.
+   > I also changed the `application[.*].yml` to load data during tests/deploy.
 
 Feel free to modify the files included, upgrade frameworks, add or remove packages, in every aspect you want. Just check the note regarding JUnit tests below.
+   > I included Lombok, 'cos it simplifies writing POJOs.
 
 # Expected results
 After the implementation, the application should run after the following command line:
