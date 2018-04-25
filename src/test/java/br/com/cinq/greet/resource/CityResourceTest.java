@@ -24,7 +24,7 @@ public class CityResourceTest {
   @Autowired private TestRestTemplate restTemplate;
 
   @Test
-  public void test_GET_cities() {
+  public void should_return_country_cities() {
     ResponseEntity<String> entity =
         this.restTemplate.getForEntity("/rest/cities?country=uni", String.class);
 
@@ -42,5 +42,28 @@ public class CityResourceTest {
 
     assertThat(
         "It should countain 'Atlanta'", responseBody, CoreMatchers.containsString("Atlanta"));
+  }
+
+  @Test
+  public void should_return_all_cities_when_country_is_supressed() {
+    ResponseEntity<String> entity = this.restTemplate.getForEntity("/rest/cities", String.class);
+
+    assertThat("It should've returned OK", entity.getStatusCode(), equalTo(HttpStatus.OK));
+
+    String responseBody = entity.getBody();
+
+    assertThat(
+        "It should countain 'United States'",
+        responseBody,
+        CoreMatchers.containsString("United States"));
+    assertThat(
+        "It should countain 'New York'", responseBody, CoreMatchers.containsString("New York"));
+
+    assertThat("It should countain 'France'", responseBody, CoreMatchers.containsString("France"));
+    assertThat("It should countain 'Paris'", responseBody, CoreMatchers.containsString("Paris"));
+
+    assertThat("It should countain 'Brazil'", responseBody, CoreMatchers.containsString("Brazil"));
+    assertThat(
+        "It should countain 'Fortaleza'", responseBody, CoreMatchers.containsString("Fortaleza"));
   }
 }

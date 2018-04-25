@@ -16,7 +16,11 @@ public class CityResource {
   @GET
   @Produces("application/json")
   public List<City> getCities(@QueryParam("country") String countryName) throws ServiceException {
-    return cityService.findByCountry(countryName);
+    if (countryName != null) {
+      return cityService.findByCountry(countryName);
+    } else {
+      return cityService.findAll();
+    }
   }
 
   @POST

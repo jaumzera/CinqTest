@@ -22,9 +22,6 @@ public class CityService {
 
   public List<City> findByCountry(String countryName) throws ServiceException {
     List<Country> countries = contryCountryRepository.findByNameContainingIgnoreCase(countryName);
-    if (countries.isEmpty()) {
-      throw new ServiceException("Country not found: " + countryName);
-    }
     return cityRepository.findByCountryIn(countries);
   }
 
@@ -45,5 +42,9 @@ public class CityService {
     return contryCountryRepository
         .findById(country.getId())
         .orElseThrow(() -> new ServiceException("Country not found"));
+  }
+
+  public List<City> findAll() {
+    return cityRepository.findAll();
   }
 }
