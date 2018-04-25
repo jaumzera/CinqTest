@@ -1,3 +1,11 @@
+# Some considerations
+1. Well, I think it would be easier building the same application without Jersey. I mean, using default Spring's RestController. But I kept Jersey as the text suggested. 
+2. After coding, I ran FindBugs pluggins in order to find potentials bugs.
+3. The code is idented with 2 spaces because of Google's Java Style plugin.
+4. Some other considerations is writen across the text inside quote block such as the following:
+> this is a quote
+
+
 # Skills in Spring, Data manipulation and JAX RS
 Here you will find a scaffold of a project that aims to expose a REST service to list cities.
 You need to upgrade the project to the newest versions and implement this service using any necessary means.
